@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AI Tutor</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <!-- ============ MOODLE-STYLE NAVBAR ============ -->
+  <nav class="navbar" aria-label="Site navigation">
+    <a class="nav-brand" href="#"><span class="nav-logo">🎓</span><span>My Academy</span></a>
+    <ul class="nav-links">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Dashboard</a></li>
+      <li><a href="#">My courses</a></li>
+      <li><a href="#" class="active">AI Tutor</a></li>
+    </ul>
+    <div class="nav-user"><span class="nav-avatar">S</span><span class="nav-name">Student</span></div>
+  </nav>
+
+  <div class="app" id="app">
+
+    <!-- ============ SIDEBAR ============ -->
+    <aside class="sidebar" id="sidebar" aria-label="Tutor sidebar">
+      <div class="brand">
+        <span class="logo">🎓</span>
+        <div>
+          <strong>AI Tutor</strong>
+          <small>Learn with sources</small>
+        </div>
+      </div>
+
+      <button id="newChat" class="btn primary block" type="button">＋ New chat</button>
+
+      <div class="tabs" role="tablist" aria-label="Sidebar sections">
+        <button class="tab" role="tab" type="button" data-tab="history" aria-selected="true">🕘 History</button>
+        <button class="tab" role="tab" type="button" data-tab="settings" aria-selected="false">⚙️ Settings</button>
+      </div>
+
+      <!-- History tab -->
+      <section class="tab-panel" data-panel="history" role="tabpanel">
+        <input id="historySearch" class="search" type="search" placeholder="Search chats…" aria-label="Search chats" />
+        <div id="historyList" class="history-list"></div>
+        <button id="clearHistory" class="btn block small" type="button">🗑️ Clear all history</button>
+      </section>
+
+      <!-- Settings tab -->
+      <section class="tab-panel" data-panel="settings" role="tabpanel" hidden>
+        <details class="acc" open>
+          <summary>Course</summary>
+          <div class="acc-body">
+            <label for="course" class="mini-label">Current course</label>
+            <select id="course" class="select"></select>
+          </div>
+        </details>
+
+        <details class="acc" open>
+          <summary>Explanation mode</summary>
+          <div class="acc-body">
+            <div id="modeList" class="mode-list" role="radiogroup" aria-label="Explanation mode"></div>
+            <p id="modeDesc" class="mode-desc"></p>
+          </div>
+        </details>
+
+        <details class="acc" open>
+          <summary>Quiz settings</summary>
+          <div class="acc-body">
+            <div class="row-2">
+              <div>
+                <label for="quizCount" class="mini-label">Questions</label>
+                <select id="quizCount" class="select">
+                  <option value="3">3</option>
+                  <option value="5" selected>5</option>
+                </select>
+              </div>
+              <div>
+                <label for="quizLevel" class="mini-label">Level</label>
+                <select id="quizLevel" class="select">
+                  <option>Easy</option>
+                  <option selected>Medium</option>
+                  <option>Hard</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </details>
+      </section>
+
+      <p class="foot">Answers are based on your course materials and always show their sources.</p>
+    </aside>
+    <div class="scrim" id="scrim"></div>
+
+    <!-- ============ CHAT ============ -->
+    <main class="chat">
+      <header class="topbar">
+        <button id="menuBtn" class="icon-btn" type="button" aria-label="Toggle sidebar" title="Toggle sidebar">☰</button>
+        <div class="titles">
+          <nav class="breadcrumb" aria-label="Breadcrumb">Home › My courses › AI Tutor</nav>
+          <h1>AI Tutor</h1>
+          <p id="subtitle">Ask anything about your course</p>
+        </div>
+        <span id="modeBadge" class="badge"></span>
+      </header>
+
+      <div id="messages" class="messages" aria-live="polite"></div>
+
+      <div class="composer-wrap">
+        <div id="chips" class="chips"></div>
+        <form id="composer" class="composer" autocomplete="off">
+          <button type="button" id="quizBtn" class="btn ghost" title="Ask for a quiz">📝 Quiz</button>
+          <textarea id="input" rows="1" placeholder="Ask a question…  (Enter to send, Shift+Enter for a new line)"></textarea>
+          <button type="submit" id="sendBtn" class="btn primary">Send ➤</button>
+        </form>
+        <p class="hint">The tutor can make mistakes. Check the cited sources for important facts.</p>
+      </div>
+    </main>
+  </div>
+
+  <!-- mock.js = the DEMO TUTOR block cut from your old main.js (unchanged) -->
+  <script src="js/mock.js"></script>
+  <script src="js/main.js"></script>
+
+</body>
+</html>
